@@ -85,6 +85,7 @@ onPageChange(position){
 | ```direction``` | String  | Orientation(i.e. horizontal,vertical) | horizontal
 | ```customStyles``` | Object  | Custom styling | {}
 | ```labels``` | Array  | Labels for each step | null
+| ```labelStyle``` | Text.propTypes.style  | Style for labels | null
 
 ### Custom Styles
 
