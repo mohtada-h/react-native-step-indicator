@@ -152,12 +152,12 @@ export default class StepIndicator extends PureComponent {
     }
 
     renderStepLabels = () => {
-      const { labels, direction, currentPosition } = this.props;
+      const { labels, direction, currentPosition, labelStyle } = this.props;
       var labelViews = labels.map((label,index) => {
         const selectedStepLabelStyle = index === currentPosition ? { color: this.customStyles.currentStepLabelColor } : { color: this.customStyles.labelColor }
         return (
           <View style={styles.stepLabelItem} key={index}>
-            <Text style={[styles.stepLabel,selectedStepLabelStyle , { fontSize: this.customStyles.labelSize }]}>
+            <Text style={[styles.stepLabel,selectedStepLabelStyle , { fontSize: this.customStyles.labelSize }, labelStyle]}>
               {label}
             </Text>
           </View>
@@ -309,7 +309,8 @@ export default class StepIndicator extends PureComponent {
     stepCount: PropTypes.number,
     customStyles: PropTypes.object,
     direction: PropTypes.oneOf(['vertical', 'horizontal']),
-    labels: PropTypes.array
+    labels: PropTypes.array,
+    labelStyle: Text.propTypes.style
   };
 
   StepIndicator.defaultProps = {
