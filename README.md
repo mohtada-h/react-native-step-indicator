@@ -86,6 +86,8 @@ onPageChange(position){
 | ```customStyles``` | Object  | Custom styling | {}
 | ```labels``` | Array  | Labels for each step | null
 | ```labelStyle``` | Text.propTypes.style  | Style for labels | null
+| ```stepIndicatorStyle``` | View.propTypes.style  | Style for step indicator | null
+| ```renderIndicatorLabel``` | function(position)  | Function that get position and return indicator label | null
 
 ### Custom Styles
 

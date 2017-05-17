@@ -172,7 +172,7 @@ export default class StepIndicator extends PureComponent {
     }
 
     renderStep = (position) => {
-      const { currentPosition, stepCount, direction } = this.props;
+      const { currentPosition, stepCount, direction, stepIndicatorStyle, renderIndicatorLabel } = this.props;
       let stepStyle;
       let indicatorLabelStyle;
       const separatorStyle = (direction === 'vertical') ? { width: this.customStyles.separatorStrokeWidth, zIndex:10 } : { height: this.customStyles.separatorStrokeWidth }
@@ -219,9 +219,9 @@ export default class StepIndicator extends PureComponent {
       }
 
       return (
-        <Animated.View key={'step-indicator'} removeClippedSubviews style={[styles.step , stepStyle ]}>
-          <Text style={indicatorLabelStyle}>{ position + 1 }</Text>
-        </Animated.View>
+          <Animated.View key={'step-indicator'} removeClippedSubviews style={[styles.step , stepStyle, stepIndicatorStyle ]}>
+              <Text style={indicatorLabelStyle}>{ renderIndicatorLabel ? renderIndicatorLabel(position + 1) : position + 1 }</Text>
+          </Animated.View>
       );
     }
 
@@ -310,7 +310,9 @@ export default class StepIndicator extends PureComponent {
     customStyles: PropTypes.object,
     direction: PropTypes.oneOf(['vertical', 'horizontal']),
     labels: PropTypes.array,
-    labelStyle: Text.propTypes.style
+    labelStyle: Text.propTypes.style, 
+    stepIndicatorStyle: View.propTypes.style, 
+    renderIndicatorLabel: PropTypes.func
   };
 
   StepIndicator.defaultProps = {
